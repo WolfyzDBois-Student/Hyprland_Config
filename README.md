@@ -20,3 +20,33 @@ L'ensemble des raccourcis commande par `SUPER`
 - D : Ouvrir Wofi
 - B : Ouvrir Discord
 - C : Ouvrir Cursord
+
+# Changer de fond d'écran 
+
+```cmd
+sudo pacman -S hyprpaper
+nano ~/.config/hypr/hyprland.conf
+```
+Et ajouter ceci : 
+```conf
+exec-once = hyprpaper
+```
+
+Ensuite, créer un fichier de config pour : 
+```cmd
+mkdir -p ~/.config/hypr
+nano ~/.config/hypr/hyprpaper.conf
+```
+
+Puis ajouter cette ligne vers son fond d'écran : 
+```conf
+preload = /home/wolfyz/Téléchargements/montapier.png
+wallpaper = eDP-1, /home/wolfyz/Téléchargements/montapier.png
+```
+
+### Bonus : Fond d'écran aléatoire 
+```
+exec-once = hyprpaper
+exec-once = find /home/wolfyz/Téléchargements/Wallpapers/ -type f | shuf -n 1 | xargs -I {} echo "wallpaper = eDP-1, {}" > ~/.config/hypr/hyprpaper.conf
+exec-once = find /home/wolfyz/Téléchargements/Wallpapers/ -type f | shuf -n 1 | xargs -I {} echo "wallpaper = HDMI-A-1, {}" >> ~/.config/hypr/hyprpaper.conf
+```
